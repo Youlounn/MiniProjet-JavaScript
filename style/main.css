@@ -20,3 +20,15 @@ input[type=text], input[type=mail], input[type=password], select {
 		color: #1F618D;
 		font: "Open sans";
 	}
+
+#loupe{
+  margin-left: 15px;
+}
+
+#plus:hover{
+  cursor: pointer;
+}
+
+#reglages {
+  display: none;
+}
