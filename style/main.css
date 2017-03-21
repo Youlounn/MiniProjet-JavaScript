@@ -13,7 +13,6 @@
 input[type=text], input[type=mail], input[type=password], select {
 		width: 25%;
 		padding: 8px;
-		margin: 8px 0;
 		display: inline-block;
 		border: 1px solid #ccc;
 		border-radius: 4px;
@@ -21,7 +20,3 @@ input[type=text], input[type=mail], input[type=password], select {
 		color: #1F618D;
 		font: "Open sans";
 	}
-
-#engrenage i{
-  padding-top: 13px;
-}
