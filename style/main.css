@@ -10,8 +10,40 @@
   text-align: right;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #99ADC2;
+}
+
+header{
+  background-color: #22313F;
+  width: 100%;
+}
+
+header p{
+  margin: 0;
+  padding: 1.5%;
+  color: #99ADC2;
+  font-family: 'Montserrat', sans-serif;
+  font-size:20px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #22313F;
+}
+
+footer p{
+  font-family: 'Montserrat', sans-serif;
+  color: #99ADC2;
+  text-align: center;
+  margin: 1%;
+}
 input[type=text], input[type=mail], input[type=password], select {
-		width: 25%;
+		width: 70%;
 		padding: 8px;
 		display: inline-block;
 		border: 1px solid #ccc;
@@ -21,8 +53,24 @@ input[type=text], input[type=mail], input[type=password], select {
 		font: "Open sans";
 	}
 
-#loupe{
+.entete{
+  color: #99ADC2;
+  width: 100%;
+  padding: 0;
+}
+
+#form{
+  background-color: #34495E;
+  width: 30%;
+  margin: 2%;
+  padding:1%;
+  box-shadow:5px 5px 5px 5px #34495E;
+  border-radius: 5px;
+}
+
+.icone{
   margin-left: 15px;
+  color: #99ADC2;
 }
 
 #plus:hover{
@@ -31,20 +79,23 @@ input[type=text], input[type=mail], input[type=password], select {
 
 #reglages {
   display: none;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 #reglages i {
   padding: 0.5%;
   border-radius: 0%;
-  border: 1px solid black;
+  border: 1px solid #99ADC2;
+  font-size: 80%;
 }
 
 #reglages input{
-  border: 0px solid white;
-  border-bottom: 2px solid black;
-  width: 3%;
-  padding: 0px;
-  border-radius: 0;
-  color: black;
+  width: 25%;
+  padding: 8px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #1F618D;
+  font: "Open sans";
 }

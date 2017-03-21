@@ -4,23 +4,33 @@
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <title>Mini-projet java script</title>
   </head>
   <body>
-      <p>Nom de commune :</p>
+    <header>
+      <p>Mini-projet de programmation web - client riche</p>
+
+    </header>
+    <div id="form">
+      <p class="entete">Nom de commune :</p>
       <input type="text" id="nomVille"></input>
       <a id="plus">
-        <i id="loupe" class="fa fa-plus-square-o"></i>
+        <i id="loupe" class="fa fa-plus-square-o icone"></i>
       </a>
-      <i id="loupe" class="fa fa-search"></i>
-
-    </br>
-    <div id="reglages">
-      <input type="text" value="20" pattern="\d+" id="nombrePhoto"></input>
-      <i id="incrementer" class="fa fa-plus"></i>    
-      <i id="decrementer" class="fa fa-minus"></i>
+      <i id="loupe" class="fa fa-search icone"></i>
+      </br>
+      <div id="reglages">
+        <p class="entete">Nombre d'image(s) souhaitée(s)</p>
+        <input type="text" value="20" pattern="\d+" id="nombrePhoto"></input>
+        <i id="incrementer" class="fa fa-plus icone"></i>
+        <i id="decrementer" class="fa fa-minus icone"></i>
+      </div>
     </div>
+    <footer>
+      <p>Lartigue Alexis & Rialet Yohann</p>
+    </footer>
   </body>
 </html>
