@@ -31,4 +31,20 @@ input[type=text], input[type=mail], input[type=password], select {
 
 #reglages {
   display: none;
+  margin-top: 5%;
+}
+
+#reglages i {
+  padding: 0.5%;
+  border-radius: 0%;
+  border: 1px solid black;
+}
+
+#reglages input{
+  border: 0px solid white;
+  border-bottom: 2px solid black;
+  width: 3%;
+  padding: 0px;
+  border-radius: 0;
+  color: black;
 }
