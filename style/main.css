@@ -62,11 +62,12 @@ input[type=text], input[type=mail], input[type=password], select {
 
 #form{
   background-color: #34495E;
-  width: 30%;
+  width: 25%;
   margin: 2%;
-  padding:1%;
+  padding:0.5%;
   box-shadow:5px 5px 5px 5px #34495E;
   border-radius: 5px;
+  display: inline-block;
 }
 
 .icone{
@@ -94,10 +95,23 @@ input[type=text], input[type=mail], input[type=password], select {
 #reglages input{
   width: 25%;
   padding: 8px;
-  display: inline-block;
+  display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   color: #1F618D;
   font: "Open sans";
+}
+
+#panneau{
+  display: inline-block;
+  width: 60%;
+  height: 70%;
+  overflow: scroll;
+  background-color: grey;
+  margin-left: 3%;
+  position: absolute;
+  margin-top: 2%;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px grey;
 }
