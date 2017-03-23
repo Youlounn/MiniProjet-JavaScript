@@ -24,7 +24,7 @@ header{
 header p{
   margin: 0;
   padding: 1.5%;
-  color: #99ADC2;
+  color: white;
   font-family: 'Montserrat', sans-serif;
   font-size:20px;
 }
@@ -38,7 +38,7 @@ footer{
 
 footer p{
   font-family: 'Montserrat', sans-serif;
-  color: #99ADC2;
+  color: white;
   text-align: center;
   margin: 1%;
 }
@@ -54,9 +54,10 @@ input[type=text], input[type=mail], input[type=password], select {
 	}
 
 .entete{
-  color: #99ADC2;
+  color: white;
   width: 100%;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #form{
@@ -70,7 +71,7 @@ input[type=text], input[type=mail], input[type=password], select {
 
 .icone{
   margin-left: 15px;
-  color: #99ADC2;
+  color: white;
 }
 
 #plus:hover{
