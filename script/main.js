@@ -23,4 +23,10 @@ $(function(){
     $("#reglages input").val(nb);
   })
 
+  $( "#nomVille").autocomplete({
+      source: "spip.php?page=autocomplete",
+      minLength: 2,
+    });
+
+
 });
