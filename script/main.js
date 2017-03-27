@@ -25,6 +25,7 @@ $(function(){
 
   var listeVille = [];
   $( "#tabs" ).tabs();
+  $( "#dialog" ).dialog();
 
   $.ajax({
    url: 'http://api.flickr.com/services/feeds/photos_public.gne',
@@ -36,10 +37,22 @@ $(function(){
      $.each(data.items, function(i,item){
      var photo = $("<img/>").attr("src", item.media.m);
      photo.attr("class", "itemPhoto").appendTo("#tabs-1");
+
      var src = item.media.m;
      var auteur = item.author;
      var titre = item.title;
-     var date = item.date;         
+     var date = item.date;        
+      $(".dial").hide();
+
+     photo.click(function(){
+       $("#titrePhoto").innerHTML=titre;
+       $("#auteurPhoto").innerHTML=auteur;
+       $("#srcPhoto").innerHTML=titre;
+       $("#datePhoto").innerHTML=date;
+       $(".dial").show();
+       alert(src+" "+auteur+" "+ titre+" "+ date);
+     });
+
             if ( i == $("#nombrePhoto").val) {
               return false;
             }});
