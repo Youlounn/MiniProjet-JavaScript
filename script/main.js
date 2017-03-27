@@ -24,7 +24,6 @@ $(function(){
   })
 
   var listeVille = [];
-  var cmp=0;
   $( "#tabs" ).tabs();
 
   $.ajax({
@@ -35,16 +34,13 @@ $(function(){
    data:'tags=nantes&tagmode=any&format=json',
    success: function (data) {
      $.each(data.items, function(i,item){
-       if(cmp<3){
-        var photo = $("<img/>").attr("src", item.media.m);
-        photo.attr("class", "itemPhoto").appendTo("#tabs-1");
-        cmp++;
-       }else{
-         cmp=0
-        // $("</br>").appendTo("#tabs-1");
-       }
-            
-            if ( i == $("#nombrePhoto").val ) {
+     var photo = $("<img/>").attr("src", item.media.m);
+     photo.attr("class", "itemPhoto").appendTo("#tabs-1");
+     var src = item.media.m;
+     var auteur = item.author;
+     var titre = item.title;
+     var date = item.date;         
+            if ( i == $("#nombrePhoto").val) {
               return false;
             }});
           },
