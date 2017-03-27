@@ -26,6 +26,7 @@ $(function(){
   var listeVille = [];
   $( "#tabs" ).tabs();
   $( "#dialog" ).dialog();
+   $('#tabPhoto').DataTable();
 
   $.ajax({
    url: 'http://api.flickr.com/services/feeds/photos_public.gne',
