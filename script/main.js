@@ -1,4 +1,6 @@
 $(function(){
+  $(".ui-dialog").hide();
+  var dialog = false;
   var bool = 0;
   var nb = 20;
 
@@ -24,8 +26,8 @@ $(function(){
   })
 
   var listeVille = [];
-  $( "#tabs" ).tabs();
-  $( "#dialog" ).dialog();
+  $("#tabs").tabs();
+  $("#dialog").dialog();
 
   $.ajax({
    url: 'http://api.flickr.com/services/feeds/photos_public.gne',
@@ -42,15 +44,22 @@ $(function(){
      var auteur = item.author;
      var titre = item.title;
      var date = item.date;        
-      $(".dial").hide();
+     $(".ui-dialog").css("visibility","hidden");
+     $(".ui-dialog").css("position","absolute");
+     $(".ui-dialog").css("left","2%");
+     $(".ui-dialog").css("top","60%");
 
      photo.click(function(){
-       $("#titrePhoto").innerHTML=titre;
-       $("#auteurPhoto").innerHTML=auteur;
-       $("#srcPhoto").innerHTML=titre;
-       $("#datePhoto").innerHTML=date;
-       $(".dial").show();
-       alert(src+" "+auteur+" "+ titre+" "+ date);
+       if(dialog == false){
+         $('#dialog').append("<p>"+titre+"</br>"+auteur+"</p>")
+         $(".ui-dialog").css("visibility","visible");
+         dialog = true;
+       }
+       else{
+         $('#dialog').empty();
+         $(".ui-dialog").css("visibility","hidden");
+         dialog = false;
+       }
      });
 
             if ( i == $("#nombrePhoto").val) {
