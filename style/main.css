@@ -114,4 +114,12 @@ input[type=text], input[type=mail], input[type=password], select {
   margin-top: 2%;
   border-radius: 4px;
   box-shadow: 5px 5px 5px grey;
+  text-align: center;
 }
+
+  .itemPhoto{
+    margin-left: 12px;
+    margin-bottom: 12px;
+    width: 240px;
+    height: 130px;
+  }

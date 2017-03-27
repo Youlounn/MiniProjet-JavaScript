@@ -24,6 +24,8 @@ $(function(){
   })
 
   var listeVille = [];
+  var cmp=0;
+  $( "#tabs" ).tabs();
 
   $.ajax({
    url: 'http://api.flickr.com/services/feeds/photos_public.gne',
@@ -33,9 +35,17 @@ $(function(){
    data:'tags=nantes&tagmode=any&format=json',
    success: function (data) {
      $.each(data.items, function(i,item){
-            $("<img/>").attr("src", item.media.m).appendTo("#panneau");
-            if ( i == 16 ) {
-              return false ; 
+       if(cmp<3){
+        var photo = $("<img/>").attr("src", item.media.m);
+        photo.attr("class", "itemPhoto").appendTo("#tabs-1");
+        cmp++;
+       }else{
+         cmp=0
+        // $("</br>").appendTo("#tabs-1");
+       }
+            
+            if ( i == $("#nombrePhoto").val ) {
+              return false;
             }});
           },
     error: function(resultat,statut,erreur){
