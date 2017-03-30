@@ -79,6 +79,10 @@ input[type=text], input[type=mail], input[type=password], select {
   color: white;
 }
 
+#loupe{
+  cursor: pointer;
+}
+
 #plus:hover{
   cursor: pointer;
 }
