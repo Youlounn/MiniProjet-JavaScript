@@ -1,7 +1,7 @@
 $(function() {
     var dialog = false;
     var bool = 0;
-    var nb = 20;
+    var nb = 1000;
 
     $("#plus").click(function() {
         if (bool == 0) {
@@ -17,13 +17,11 @@ $(function() {
         nb = $("#reglages input").val();
         nb++;
         $("#reglages input").val(nb);
-        console.log("val = "+$("#nombrePhoto").val());
     })
     $("#decrementer").click(function() {
         nb = $("#reglages input").val();
         nb--;
         $("#reglages input").val(nb);
-        console.log("val = "+$("#nombrePhoto").val());
     })
 
     var listeVille = [];
@@ -42,7 +40,8 @@ $(function() {
     $("#loupe").click(function() {
         $("#soustabs1").empty();
         var ville = $('#nomVille').val();
-        var textData = 'tags='+ville+'&tagmode=any&format=json';
+        var textData = '&tags='+ville+'&tagmode=all&format=json';
+
         $.ajax({
             url: 'http://api.flickr.com/services/feeds/photos_public.gne',
             type: 'GET',
@@ -51,7 +50,8 @@ $(function() {
               // a renseigner d'après la doc du service, par défaut callback
             data: textData,
             success: function(data) {
-                $.each(data.items,  function(i, item) {
+                alert(JSON.stringify(data));
+                $.each(data.items,  function(i,item) {
                     var photo = $("<img/>").attr("src",  item.media.m);
                     photo.attr("class", "itemPhoto").appendTo("#soustabs1");
                     var src = item.media.m;
@@ -77,10 +77,13 @@ $(function() {
                             dialog = false;
                         }
                     });
-                    var nb = $("#nombrePhoto").val();
-                    if  ( i  ==  nb-1)  {
+                    var tmp = $("#reglages input").val();
+                    console.log("i = "+i);
+                    console.log("tmp = "+tmp);
+                    if  (i  ==  tmp-1)  {
                         return  false;
                     }
+                    i = i - 1;
                 });          
             },
             error:   function(resultat, statut, erreur) {
@@ -88,13 +91,13 @@ $(function() {
             },
         });
     });
-
-
-    //
-    // $("#nomVille").autocomplete({
-    //     source: "spip.php?page=autocomplete",
-    //     minLength: 2,
-    // });
-
-
+    var src = 'http://localhost/test/serveur/codePostalComplete.php?commune='+$('#nomVille').val()+'&maxRows=5';
+    console.log("src = "+src);
+    $(document).ready(function(){
+      $('#nomVille').autocomplete({
+        source: src,
+        minLength:2,
+        dataType: 'json'
+      });
+    });
 });
