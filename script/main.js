@@ -33,8 +33,9 @@ $(function() {
     $('#tabPhoto').dataTable();
 
     $("#loupe").click(function() {
+        $("#soustabs1").empty();
         var ville = $('#nomVille').val();
-        var textData = 'tags=ville'+ville+'&tagmode=any&format=json';
+        var textData = 'tags='+ville+'&tagmode=any&format=json';
         $.ajax({
             url: 'http://api.flickr.com/services/feeds/photos_public.gne',
             type: 'GET',
@@ -43,12 +44,9 @@ $(function() {
               // a renseigner d'après la doc du service, par défaut callback
             data: textData,
             success: function(data) {
-              alert("test1");
-              alert(JSON.stringify(data));
                 $.each(data.items,  function(i, item) {
                     var photo = $("<img/>").attr("src",  item.media.m);
-                    photo.attr("class", "itemPhoto").appendTo("#tabs-1");
-
+                    photo.attr("class", "itemPhoto").appendTo("#soustabs1");
                     var src = item.media.m;
                     var auteur = item.author;
                     var titre = item.title;
