@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -12,54 +13,51 @@
     <script src="script/main.js"></script>
     <meta charset="utf-8">
     <title>Mini-projet java script</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <p>Mini-projet de programmation web - client riche</p>
+        <p>Mini-projet de programmation web - client riche</p>
 
     </header>
     <div id="form">
-      <p class="entete">Nom de commune :</p>
-      <input type="text" id="nomVille"></input>
-      <a id="plus">
-        <i id="plus" class="fa fa-plus-square-o icone"></i>
-      </a>
-      <i id="loupe" class="fa fa-search icone"></i>
-      </br>
-      <div id="reglages">
-        <p class="entete">Nombre d'image(s) souhaitée(s)</p>
-        <input type="text" value="20" pattern="\d+" id="nombrePhoto"></input>
-        <i id="incrementer" class="fa fa-plus icone"></i>
-        <i id="decrementer" class="fa fa-minus icone"></i>
-      </div>
+        <p class="entete">Nom de commune :</p>
+        <input type="text" id="nomVille"></input>
+        <a id="plus">
+            <i id="plus" class="fa fa-plus-square-o icone"></i>
+        </a>
+        <i id="loupe" class="fa fa-search icone"></i>
+        </br>
+        <div id="reglages">
+            <p class="entete">Nombre d'image(s) souhaitée(s)</p>
+            <input type="text" value="20" pattern="\d+" id="nombrePhoto"></input>
+            <i id="incrementer" class="fa fa-plus icone"></i>
+            <i id="decrementer" class="fa fa-minus icone"></i>
+        </div>
     </div>
     <div id="panneau">
-      <div id="tabs">
-
-      <div class="dial">
-      <div id="dialog" title="Informations">
-       <label id=titrePhoto></label>
-       <label id=auteurPhoto></label>
-       <label id=srcPhoto></label>
-       <label class="dial" id=datePhoto></label>
-      </div>
+        <div id="tabs">
+            <div id="dialog" title="Informations">
+                <label id=titrePhoto></label>
+                <label id=auteurPhoto></label>
+                <label id=srcPhoto></label>
+                <label class="dial" id=datePhoto></label>
+            </div>
+            <ul>
+                <li><a href="#tabs-1">Vue photo</a></li>
+                <li><a href="#tabs-2">Vue  tableau</a></li>
+            </ul>
+            <div id="tabs-1">
+                <p>Voici les photos relatives à votre recherche. Vous êtes en vue photo.</p>
+            </div>
+            <div id="tabs-2">
+                <p>Voici les photos relatives à votre recherche. Vous êtes en vue tableau.</p>
+            </div>
+        </div>
     </div>
-  <ul>
-    <li><a href="#tabs-1">Vue photo</a></li>
-    <li><a href="#tabs-2">Vue  tableau</a></li>
-  </ul>
-  <div id="tabs-1">
-    <p>Voici les photos relatives à votre recherche. Vous êtes en vue photo.</p>
-  </div>
-  <div id="tabs-2">
-    <p>Voici les photos relatives à votre recherche. Vous êtes en vue tableau.</p>
-  </div>
-</div>
-
-    </div>
-
     <footer>
-      <p>Lartigue Alexis & Rialet Yohann</p>
+        <p>Lartigue Alexis & Rialet Yohann</p>
     </footer>
-  </body>
+</body>
+
 </html>

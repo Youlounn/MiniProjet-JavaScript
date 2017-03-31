@@ -1,5 +1,4 @@
 $(function() {
-    $(".ui-dialog").hide();
     var dialog = false;
     var bool = 0;
     var nb = 20;
@@ -32,9 +31,15 @@ $(function() {
     $("#dialog").dialog();
     $('#tabPhoto').dataTable();
 
+    $(".ui-button").click(function(){
+      $(".ui-dialog").css("display","none");
+      $('#dialog').empty();
+      dialog = false;
+    });
+
     $("#loupe").click(function() {
         var ville = $('#nomVille').val();
-        var textData = 'tags=ville'+ville+'&tagmode=any&format=json';
+        var textData = 'tags=' + ville + '&tagmode=any&format=json';
         $.ajax({
             url: 'http://api.flickr.com/services/feeds/photos_public.gne',
             type: 'GET',
@@ -43,8 +48,7 @@ $(function() {
               // a renseigner d'après la doc du service, par défaut callback
             data: textData,
             success: function(data) {
-              alert("test1");
-              alert(JSON.stringify(data));
+                alert(JSON.stringify(data));
                 $.each(data.items,  function(i, item) {
                     var photo = $("<img/>").attr("src",  item.media.m);
                     photo.attr("class", "itemPhoto").appendTo("#tabs-1");
@@ -59,17 +63,19 @@ $(function() {
                     $(".ui-dialog").css("top", "60%");
 
                     photo.click(function() {
+                        console.log("Dialog : "+dialog);
                         if (dialog == false) {
-                            $('#dialog').append("<p>" + titre + "</br>" + auteur + "</p>")
+                            $('#dialog').append("<p>" + titre + "</br>" + auteur + "</p>");
                             $(".ui-dialog").css("visibility", "visible");
+                            $(".ui-dialog").css("display", "block");
                             dialog = true;
                         } else {
                             $('#dialog').empty();
                             $(".ui-dialog").css("visibility", "hidden");
+                            $(".ui-dialog").css("display", "none");
                             dialog = false;
                         }
                     });
-
                     if  ( i  ==  $("#nombrePhoto").val)  {
                         return  false;
                     }
