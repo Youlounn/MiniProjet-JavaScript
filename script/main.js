@@ -17,11 +17,13 @@ $(function() {
         nb = $("#reglages input").val();
         nb++;
         $("#reglages input").val(nb);
+        console.log("val = "+$("#nombrePhoto").val());
     })
     $("#decrementer").click(function() {
         nb = $("#reglages input").val();
         nb--;
         $("#reglages input").val(nb);
+        console.log("val = "+$("#nombrePhoto").val());
     })
 
     var listeVille = [];
@@ -49,7 +51,6 @@ $(function() {
               // a renseigner d'après la doc du service, par défaut callback
             data: textData,
             success: function(data) {
-                alert(JSON.stringify(data));
                 $.each(data.items,  function(i, item) {
                     var photo = $("<img/>").attr("src",  item.media.m);
                     photo.attr("class", "itemPhoto").appendTo("#soustabs1");
@@ -76,7 +77,8 @@ $(function() {
                             dialog = false;
                         }
                     });
-                    if  ( i  ==  $("#nombrePhoto").val)  {
+                    var nb = $("#nombrePhoto").val();
+                    if  ( i  ==  nb-1)  {
                         return  false;
                     }
                 });          
