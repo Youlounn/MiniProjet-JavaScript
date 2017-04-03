@@ -14,9 +14,14 @@ $(function() {
     })
 
     $("#incrementer").click(function() {
-        nb = $("#reglages input").val();
-        nb++;
-        $("#reglages input").val(nb);
+        if($("#reglages input").val() == 20){
+          $("#reglages input").val(20);
+        }
+        else{
+          nb = $("#reglages input").val();
+          nb++;
+          $("#reglages input").val(nb);
+        }
     })
     $("#decrementer").click(function() {
         nb = $("#reglages input").val();
@@ -31,16 +36,16 @@ $(function() {
     $("#dialog").dialog();
     $('#tabPhoto').dataTable();
 
-    $(".ui-button").click(function(){
-      $(".ui-dialog").css("display","none");
-      $('#dialog').empty();
-      dialog = false;
+    $(".ui-button").click(function() {
+        $(".ui-dialog").css("display", "none");
+        $('#dialog').empty();
+        dialog = false;
     });
 
     $("#loupe").click(function() {
         $("#soustabs1").empty();
         var ville = $('#nomVille').val();
-        var textData = '&tags='+ville+'&tagmode=all&format=json';
+        var textData = '&tags=' + ville + '&tagmode=all&format=json';
 
         $.ajax({
             url: 'http://api.flickr.com/services/feeds/photos_public.gne',
@@ -51,7 +56,7 @@ $(function() {
             data: textData,
             success: function(data) {
                 alert(JSON.stringify(data));
-                $.each(data.items,  function(i,item) {
+                $.each(data.items,  function(i, item) {
                     var photo = $("<img/>").attr("src",  item.media.m);
                     photo.attr("class", "itemPhoto").appendTo("#soustabs1");
                     var src = item.media.m;
@@ -64,7 +69,7 @@ $(function() {
                     $(".ui-dialog").css("top", "60%");
 
                     photo.click(function() {
-                        console.log("Dialog : "+dialog);
+                        console.log("Dialog : " + dialog);
                         if (dialog == false) {
                             $('#dialog').append("<p>" + titre + "</br>" + auteur + "</p>");
                             $(".ui-dialog").css("visibility", "visible");
@@ -78,9 +83,9 @@ $(function() {
                         }
                     });
                     var tmp = $("#reglages input").val();
-                    console.log("i = "+i);
-                    console.log("tmp = "+tmp);
-                    if  (i  ==  tmp-1)  {
+                    console.log("i = " + i);
+                    console.log("tmp = " + tmp);
+                    if  (i  ==  tmp - 1)  {
                         return  false;
                     }
                     i = i - 1;
@@ -91,13 +96,25 @@ $(function() {
             },
         });
     });
-    var src = 'http://localhost/test/serveur/codePostalComplete.php?commune='+$('#nomVille').val()+'&maxRows=5';
-    console.log("src = "+src);
-    $(document).ready(function(){
-      $('#nomVille').autocomplete({
-        source: src,
-        minLength:2,
-        dataType: 'json'
-      });
+    var listeAutocomplete = [];
+    $.getJSON('http://localhost/test/serveur/communes.php', {
+        commune: null
+    }, function(data) {
+        var map = {};
+        $.each(data, function(i, item) {
+            if(map[item.VILLE] == null){
+                map[item.VILLE] = true;
+                listeAutocomplete.push(item.VILLE);
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('#nomVille').autocomplete({
+            source: function(req, response) {
+                var results = $.ui.autocomplete.filter(listeAutocomplete, req.term);
+                response(results.slice(0, 10)); //for getting 5 results
+            },
+            minLength: 3,
+        });
     });
 });
