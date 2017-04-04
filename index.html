@@ -30,9 +30,11 @@
         </br>
         <div id="reglages">
             <p class="entete">Nombre d'image(s) souhaitée(s)</p>
-            <input type="text" value="20" pattern="\d+" id="nombrePhoto"></input>
+            <input type="text" value="6" pattern="\d+" id="nombrePhoto"></input>
             <i id="incrementer" class="fa fa-plus icone"></i>
-            <i id="decrementer" class="fa fa-minus icone"></i>
+            <i id="decrementer" class="fa fa-minus icone"></i> </br></br>
+            <p class="entete">Date minimum</p>
+            <input type="date" value="2000-01-01" id="dateMin"></input>
         </div>
     </div>
     <div id="panneau">
@@ -56,6 +58,17 @@
             <div id="tabs-2">
               <p>Voici les photos relatives à votre recherche. Vous êtes en vue tableau.</p>
               <div id="soustabs2">
+                <table id="tableau">
+                  <thead>
+                    <tr>
+                      <th>Photos</th>
+                      <th>Auteur</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableauBody">
+                  </tbody>
+                </table>
 
               </div>
             </div>

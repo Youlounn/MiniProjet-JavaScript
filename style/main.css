@@ -100,10 +100,21 @@ input[type=text], input[type=mail], input[type=password], select {
   font-size: 80%;
 }
 
-#reglages input{
+#nombrePhoto{
   width: 25%;
   padding: 8px;
-  display: block;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #1F618D;
+  font: "Open sans";
+}
+
+#dateMin{
+  width: 80%;
+  padding: 8px;
+  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -116,7 +127,7 @@ input[type=text], input[type=mail], input[type=password], select {
   width: 60%;
   height: 70%;
   overflow: scroll;
-  background-color: grey;
+  background-color: white;
   margin-left: 3%;
   position: absolute;
   margin-top: 2%;
