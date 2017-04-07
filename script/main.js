@@ -3,6 +3,14 @@ $(function() {
     var bool = 0;
     var nb = 1000;
 
+    $('.submit_on_enter').keydown(function(event) {
+      // 13 est la valeur du bouton entrer
+      if (event.keyCode == 13) {
+        traitement();
+        return false;
+      }
+    });
+
     $("#plus").click(function() {
         if (bool == 0) {
             $("#reglages").css("display", "block");
@@ -53,7 +61,9 @@ $(function() {
       }],
     });
 
-    $("#loupe").click(function() {
+    $("#loupe").click(traitement);
+
+      function traitement() {
         $("#soustabs1").empty();
         var ville = $('#nomVille').val();
         var textData = '&tags=' + ville + '&tagmode=all&format=json';
@@ -74,7 +84,7 @@ $(function() {
                   console.log("i = "+i);
                     var dateMin = $('#dateMin').val();
                     var date = item.date_taken.substring(0,10);
-
+                    //Découpage de la date
                     var anneeDate = parseInt(date.substring(0,4));
                     var anneeDateMin = parseInt(dateMin.substring(0,4));
                     var moisDate = parseInt(date.substring(5,7));
@@ -85,9 +95,14 @@ $(function() {
                     var photo = $("<img/>").attr("src",  item.media.m);
                     var src = item.media.m;
                     var titre = item.title;
-                    var auteur = item.author;
+                    var aut = item.author;
                     var photo2 = "<img src="+src+" class='photos'></img>"
+                    //découpage de la string de l'auteur pour ne récupérer que son nom
+                    var guil1 = aut.indexOf("\"")+1;
+                    var guil2 = aut.lastIndexOf("\"");
+                    var auteur = aut.substring(guil1,guil2);
 
+                    //ajout dans la table si la contrainte de date est respectee
                     var continuer = true;
                     if(anneeDateMin < anneeDate){
                       photo.attr("class", "itemPhoto").appendTo("#soustabs1");
@@ -123,14 +138,16 @@ $(function() {
                         }
                     }
 
+                    //Positionne le ui-dialog mais le cache
                     $(".ui-dialog").css("visibility", "hidden");
                     $(".ui-dialog").css("position", "absolute");
                     $(".ui-dialog").css("left", "2%");
                     $(".ui-dialog").css("top", "60%");
 
+                    //afiche le ui-dialog au click sur une photo
                     photo.click(function() {
                         if (dialog == false) {
-                            $('#dialog').append("<p>" + titre + "</br>" + auteur + "</p>");
+                            $('#dialog').append("<p>"+ "<b>Titre : </b>" + titre + "</br>" + "<b>Auteur : </b>"+auteur + "</p>");
                             $(".ui-dialog").css("visibility", "visible");
                             $(".ui-dialog").css("display", "block");
                             dialog = true;
@@ -144,8 +161,9 @@ $(function() {
                     if(nbDemande == cpt){
                       return false;
                     }
+
+                    //Affichage d'un message s'il n'y a pas de résultat
                     if((i == 19 || i == nbDemande) && cpt == 0){
-                      alert("test");
                       $('#dialog').empty();
                       $('#dialog').append("<p>Désolé, nous n'avons pas de résultat.</p>");
                       $(".ui-dialog").css("visibility", "visible");
@@ -154,6 +172,8 @@ $(function() {
                       dialog = true;
                       return false;
                     }
+
+                    //Affichage d'un message s'il n'y a pas assez de résultat
                     if(i == 19 && cpt < nbDemande){
                       $('#dialog').empty();
                       $('#dialog').append("<p>Désolé, nous n'avons pas assez de résultats.</p>");
@@ -162,35 +182,15 @@ $(function() {
                       dialog = true;
                       return false;
                     }
-                    alert('test avant');
                     tableBis.draw(true);
-                    alert('test après');
                 });          
             },
+            // déclanchement de l'erreur
             error:   function(resultat, statut, erreur) {
-                alert("erreur");
+                alert("Il y a une erreur");
             },
         });
-    });
+    }
     var listeAutocomplete = [];
-    $.getJSON('http://localhost/MiniProjet-JavaScript/serveur/communes.php', {
-        commune: null
-    }, function(data) {
-        var map = {};
-        $.each(data, function(i, item) {
-            if(map[item.VILLE] == null){
-                map[item.VILLE] = true;
-                listeAutocomplete.push(item.VILLE);
-            }
-        });
-    });
-    $(document).ready(function() {
-        $('#nomVille').autocomplete({
-            source: function(req, response) {
-                var results = $.ui.autocomplete.filter(listeAutocomplete, req.term);
-                response(results.slice(0, 10)); //for getting 5 results
-            },
-            minLength: 3,
-        });
-    });
+
 });
