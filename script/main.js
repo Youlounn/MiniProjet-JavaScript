@@ -192,5 +192,26 @@ $(function() {
         });
     }
     var listeAutocomplete = [];
-
+    /*
+        $.getJSON('http://localhost/MiniProjet-JavaScript/serveur/communes.php', {
+          commune: null
+      }, function(data) {
+          var map = {};
+          $.each(data, function(i, item) {
+              if(map[item.VILLE] == null){
+                  map[item.VILLE] = true;
+                  listeAutocomplete.push(item.VILLE);
+              }
+          });
+      });
+      $(document).ready(function() {
+          $('#nomVille').autocomplete({
+              source: function(req, response) {
+                  var results = $.ui.autocomplete.filter(listeAutocomplete, req.term);
+                  response(results.slice(0, 10)); //for getting 5 results
+              },
+              minLength: 3,
+          });
+      });
+    */
 });
