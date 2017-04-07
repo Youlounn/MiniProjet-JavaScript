@@ -173,7 +173,7 @@ $(function() {
         });
     });
     var listeAutocomplete = [];
-    $.getJSON('http://localhost/test/serveur/communes.php', {
+    $.getJSON('http://localhost/MiniProjet-JavaScript/serveur/communes.php', {
         commune: null
     }, function(data) {
         var map = {};
